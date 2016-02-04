@@ -139,8 +139,4 @@ by Prelude.")
  ;; greet the use with some useful tip
  (run-at-time 5 nil 'prelude-tip-of-the-day))
 
-;; Set custom font as default global font
-(add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
-(set-face-attribute 'default nil :font "Literation Mono Powerline-10")
 ;;; init.el ends here
-
