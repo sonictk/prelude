@@ -20,3 +20,4 @@ session*
 tramp
 /var/pcache
 *.py[cd]
+.emacs.desktop
