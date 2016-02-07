@@ -7,6 +7,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        ignore
         mouse-buffer-menu
         sp-split-sexp
         ))

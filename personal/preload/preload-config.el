@@ -12,8 +12,7 @@
 ;; This sets the default Emacs theme
 (setq prelude-theme 'monokai)
 
-; Set permanent display of line numbers
-(global-nlinum-mode t)
-
-; Save desktop and buffers/positions/modes between Emacs sessions
-(desktop-save-mode 1)
+; Stop Emacs from losing undo information by
+; setting very high limits for undo buffers
+(setq undo-limit 20000000)
+(setq undo-strong-limit 40000000)
