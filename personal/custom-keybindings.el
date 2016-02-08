@@ -1,3 +1,8 @@
+; Remap the command and alt keys on OSX
+(when (eq system-type 'darwin)
+    (setq mac-command-modifier 'meta)
+    (setq mac-option-modifier nil)
+)
 ; Set key bindings for in-place scrolling of window
 (global-set-key (kbd "M-n") 'scroll-up-line)
 (global-set-key (kbd "M-p") 'scroll-down-line)

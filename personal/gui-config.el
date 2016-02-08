@@ -45,6 +45,7 @@
 ; Set permanent display of line numbers
 ; TODO: This is causing bugs all over the GUI, figure out a better solution
 ; (global-nlinum-mode t)
+; For now only display the line numbers when goto line is activated
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
 (defun goto-line-with-feedback ()   "Show line numbers temporarily, while prompting for the line number input"   (interactive)   (unwind-protect
