@@ -15,4 +15,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(minimap-font-face ((t (:height 30 :family "Literation Mono for Powerline")))))
+ '(minimap-font-face ((t (:height 30 :family "Literation Mono for Powerline"))))
+ '(whitespace-space ((t (:foreground "gray30" :slant italic))))
+ '(whitespace-tab ((t (:foreground "gray30" :weight bold)))))

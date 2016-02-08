@@ -22,3 +22,12 @@
 (global-unset-key (kbd "C-x <"))
 (global-set-key (kbd "C-x >") '(lambda ()(interactive)(scroll-left 15)))
 (global-set-key (kbd "C-x <") '(lambda ()(interactive)(scroll-right 15)))
+
+; Bindings for commenting
+(global-unset-key (kbd "C-c C-c"))
+(global-unset-key (kbd "C-/"))
+(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-/") 'comment-or-uncomment-region)
+
+; Bindings for opening recent files
+(global-set-key (kbd "C-x C-S-f") 'recentf-open-files)
