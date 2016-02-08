@@ -22,8 +22,16 @@
 
 ; Show whitespace
 (require 'whitespace)
+(global-whitespace-mode t)
 (setq whitespace-style (quote
    (face spaces tabs space-mark tab-mark)))
+(setq whitespace-display-mappings
+  ;; all numbers are Unicode codepoint in decimal. ⁖ (insert-char 182 1)
+  '(
+    (space-mark 32 [183] [46]) ; 32 SPACE 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+    (newline-mark 10 [182 10]) ; 10 LINE FEED
+    (tab-mark 9 [9655 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
+    ))
 
 ; Disables the notification sound when scrolling past EOF, among other things
 (setq visible-bell 1)
@@ -48,6 +56,11 @@
 ; Save desktop and buffers/positions/modes between Emacs sessions
 (desktop-save-mode 1)
 
+; Disable auto-saving buffers
+(setq auto-save-default nil)
+(setq auto-save-interval 0)
+(setq auto-save-timeout 0)
+
 ; Scroll just one line when hitting bottom of window
 (setq scroll-conservatively 10000)
 
@@ -59,3 +72,11 @@
 
 ; Disable prelude auto cleaning up whitespace on file save
 (setq prelude-clean-whitespace-on-save nil)
+
+; Set UI colors
+(set-face-background 'hl-line "#1a3a3a")
+
+; Set tab width to 4
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-always-indent t)
