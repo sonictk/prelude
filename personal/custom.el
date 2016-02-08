@@ -9,7 +9,7 @@
  '(minimap-mode t)
  '(minimap-width-fraction 0.07)
  '(minimap-window-location (quote right))
- '(scroll-bar-mode nil))
+ '(scroll-bar-mode -1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
