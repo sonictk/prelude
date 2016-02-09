@@ -10,6 +10,7 @@
 
 ; Save the window layout on exit
 (desktop-save-mode 1)
+(setq desktop-save 'ask-if-new)
 
 ; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -54,13 +55,11 @@
         (goto-line (read-number "Goto line: ")))
     (nlinum-mode -1)))
 
-; Save desktop and buffers/positions/modes between Emacs sessions
-(desktop-save-mode 1)
-
 ; Disable auto-saving buffers
 (setq auto-save-default nil)
 (setq auto-save-interval 0)
 (setq auto-save-timeout 0)
+(setq prelude-auto-save nil)
 
 ; Scroll just one line when hitting bottom of window
 (setq scroll-conservatively 10000)
@@ -77,7 +76,14 @@
 ; Set UI colors
 (set-face-background 'hl-line "#1a3a3a")
 
+; Set display margins
+(setq left-margin-width 15)
+
 ; Set tab width to 4
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent t)
+
+; C++ Autocomplete for clang
+(require 'auto-complete-clang)
+(define-key c++-mode-map (kbd "C-S-SPC") 'ac-complete-clang)
