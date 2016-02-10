@@ -9,10 +9,6 @@
 (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
 (set-face-attribute 'default nil :font "Literation Mono Powerline-10")
 
-;; This sets the default Emacs theme
-(require 'monokai-theme)
-(setq prelude-theme 'monokai)
-
 ; Stop Emacs from losing undo information by
 ; setting very high limits for undo buffers
 (setq undo-limit 20000000)

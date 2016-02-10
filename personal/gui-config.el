@@ -1,3 +1,10 @@
+; Install all user-required packages first
+(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang))
+
+;; This sets the default Emacs theme
+(require 'monokai-theme)
+(setq prelude-theme 'monokai)
+
 ; Turn off the toolbar
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -86,4 +93,9 @@
 
 ; C++ Autocomplete for clang
 (require 'auto-complete-clang)
+(require 'auto-complete)
 (define-key c++-mode-map (kbd "C-S-SPC") 'ac-complete-clang)
+
+; Enable autocomplete mode only for C++, Python, and other scripting languages that would make sense
+(global-auto-complete-mode t)
+(add-to-list 'ac-modes 'sql-mode)
