@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang))
+(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang ecb))
 
 ;; This sets the default Emacs theme
 (require 'monokai-theme)
