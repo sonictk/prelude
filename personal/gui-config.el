@@ -84,7 +84,11 @@
 (set-face-background 'hl-line "#1a3a3a")
 
 ; Set display margins
-(setq left-margin-width 15)
+(add-hook 'window-configuration-change-hook
+    (lambda ()
+        (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 2 2)
+    )
+)
 
 ; Set tab width to 4
 (setq-default tab-width 4)
