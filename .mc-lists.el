@@ -10,5 +10,6 @@
         beginning-of-buffer
         ignore
         mouse-buffer-menu
+        mouse-save-then-kill
         sp-split-sexp
         ))
