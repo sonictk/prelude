@@ -84,11 +84,13 @@
 (set-face-background 'hl-line "#1a3a3a")
 
 ; Set display margins
-(add-hook 'window-configuration-change-hook
-    (lambda ()
-        (set-window-margins (car (get-buffer-window-list (current-buffer) nil t)) 2 2)
-    )
+(defun my-set-margins ()
+  "Set margins in current buffer."
+  (setq left-margin-width 4)
+  (setq right-margin-width 4)
 )
+
+(add-hook 'text-mode-hook 'my-set-margins)
 
 ; Set tab width to 4
 (setq-default tab-width 4)
