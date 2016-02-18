@@ -12,6 +12,9 @@
 ; Blinking cursor
 (blink-cursor-mode 1)
 
+; Disable ECB startup tips of the day
+(setq ecb-tip-of-the-day nil)
+
 ; Set cursor display attributes
 (setq-default cursor-type 'bar)
 
