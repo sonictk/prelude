@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang ecb))
+(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang ecb helm-gtags))
 
 ;; This sets the default Emacs theme
 (require 'monokai-theme)
@@ -16,7 +16,7 @@
 (setq ecb-tip-of-the-day nil)
 
 ; Set cursor display attributes
-(setq-default cursor-type 'bar)
+(setq-default cursor-type 'box)
 
 ; Save the window layout on exit
 (desktop-save-mode 1)
@@ -104,6 +104,10 @@
 (require 'auto-complete-clang)
 (require 'auto-complete)
 (define-key c++-mode-map (kbd "C-S-SPC") 'ac-complete-clang)
+
+; Setup helm gtags for C++ code navigation
+(require 'setup-helm)
+(require 'setup-helm-gtags)
 
 ; Enable autocomplete mode only for C++, Python, and other scripting languages that would make sense
 (global-auto-complete-mode t)
