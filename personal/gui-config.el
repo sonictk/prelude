@@ -106,7 +106,6 @@
 (define-key c++-mode-map (kbd "C-S-SPC") 'ac-complete-clang)
 
 ; Setup helm gtags for C++ code navigation
-
 (setq
      helm-gtags-ignore-case t
      helm-gtags-auto-update t
@@ -135,8 +134,24 @@
 (global-auto-complete-mode t)
 (add-to-list 'ac-modes 'sql-mode)
 
+; Setup GDB debugger to display multi view for debugging by default
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+ )
+
 ;; Scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
+
+; Check if running on Macbook based off hostname and set the font size accordingly
+(if (string-equal system-name "sonictk-mbp.local") 
+    ;; Set custom font as default global font
+    (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-12"))
+    (set-face-attribute 'default nil :font "Literation Mono Powerline-12")
+)
