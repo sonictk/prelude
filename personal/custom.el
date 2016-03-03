@@ -16,4 +16,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(minimap-font-face ((t (:height 10 :family "Literation Mono for Powerline")))))
+ '(minimap-font-face ((t (:height 10 :family "Literation Mono for Powerline"))))
+ '(whitespace-tab ((((class color) (min-colors 257)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold)) (((class color) (min-colors 89)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold)))))
