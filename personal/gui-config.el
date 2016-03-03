@@ -42,7 +42,12 @@
     (space-mark 32 [183] [46]) ; 32 SPACE 「 」, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
     (newline-mark 10 [182 10]) ; 10 LINE FEED
     (tab-mark 9 [187 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
-    ))
+    )
+)
+
+(custom-set-faces
+    '(whitespace-tab ((((class color) (min-colors 257)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold)) (((class color) (min-colors 89)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold))))
+)
 
 ; Disables the notification sound when scrolling past EOF, among other things
 (setq visible-bell 1)
