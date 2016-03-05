@@ -1,7 +1,9 @@
 ; Remap the command and alt keys on OSX
-(when (eq system-type 'darwin)
+; Also allows for fn-delete to be right-delete
+(if (or (eq system-type 'darwin) (eq system-type 'gnu/linux))
     (setq mac-command-modifier 'meta)
     (setq mac-option-modifier nil)
+    (global-set-key [kp-delete] 'delete-char)
 )
 
 ; Set key bindings for in-place scrolling of window
