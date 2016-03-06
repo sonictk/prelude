@@ -4,6 +4,10 @@
 ;; Personal custom configuration for Emacs
 ;; This is run before Prelude, and is intended to be used with Prelude.
 
+;; Fix for bug on Macbook Pro Fedora where Emacs hangs when loading
+;; See https://github.com/bbatsov/prelude/issues/896 for details.
+(setq tramp-ssh-controlmaster-options)
+
 ;;; Code:
 ;; Set custom font as default global font
 (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
