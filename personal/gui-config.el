@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang ecb helm-gtags))
+(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang ecb helm-gtags pylint py-autopep8))
 
 ;; This sets the default Emacs theme
 (require 'monokai-theme)

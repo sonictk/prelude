@@ -6,6 +6,10 @@
     (global-set-key [kp-delete] 'delete-char)
 )
 
+; Set key bindings for kill word and backward kill word that are overridden by Prelude
+(global-set-key (kbd "C-<backspace>") 'backward-kill-word)
+    (global-set-key (kbd "C-<delete>") 'kill-word)
+
 ; Set key bindings for in-place scrolling of window
 (global-set-key (kbd "M-n") 'scroll-up-line)
 (global-set-key (kbd "M-p") 'scroll-down-line)
@@ -16,6 +20,7 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+
 ; Unbind MMB
 (global-unset-key (kbd "<mouse-2>"))
 (global-set-key (kbd "<mouse-2>") 'mc/add-cursor-on-click)
