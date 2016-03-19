@@ -44,3 +44,6 @@
 
 ; Bindings for opening recent files
 (global-set-key (kbd "C-x C-S-f") 'recentf-open-files)
+
+; Binding for newline
+(global-set-key (kbd "<C-return>") 'prelude-smart-open-line)

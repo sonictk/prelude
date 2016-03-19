@@ -162,6 +162,9 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
+; Disable guru-mode prompts and tips
+(setq prelude-guru nil)
+
 ; Check if running on Macbook based off hostname and set the font size accordingly
 (if (string-equal system-name "sonictk-mbp.local") 
     ;; Set custom font as default global font
