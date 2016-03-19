@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum auto-complete-clang ecb helm-gtags pylint py-autopep8))
+(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8))
 
 ;; This sets the default Emacs theme
 (require 'monokai-theme)
@@ -45,6 +45,7 @@
     )
 )
 
+; Whitespace visualization of tabs and spaces
 (custom-set-faces
     '(whitespace-tab ((((class color) (min-colors 257)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold)) (((class color) (min-colors 89)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold))))
 )
@@ -147,6 +148,13 @@
  ;; Non-nil means display source file containing the main routine at startup
  gdb-show-main t
  )
+
+; Enable vertical rule for Python source files
+(add-hook 'python-mode-hook (lambda ()
+    (fci-mode t)
+))
+(setq fci-rule-column 80)
+(setq fci-rule-use-dashes t)
 
 ;; Scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
