@@ -1,8 +1,9 @@
 ; Install all user-required packages first
-(prelude-require-packages '(monokai-theme multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8))
+(prelude-require-packages '(multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8))
 
 ;; This sets the default Emacs theme
-(require 'monokai-theme)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'monokai t)
 (setq prelude-theme 'monokai)
 
 ; Turn off the toolbar
@@ -43,11 +44,6 @@
     (newline-mark 10 [182 10]) ; 10 LINE FEED
     (tab-mark 9 [187 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
     )
-)
-
-; Whitespace visualization of tabs and spaces
-(custom-set-faces
-    '(whitespace-tab ((((class color) (min-colors 257)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold)) (((class color) (min-colors 89)) (:background unspecified :foreground "gray30" :inverse-video unspecified :weight bold))))
 )
 
 ; Disables the notification sound when scrolling past EOF, among other things
