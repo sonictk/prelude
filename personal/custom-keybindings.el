@@ -47,3 +47,4 @@
 
 ; Binding for newline
 (global-set-key (kbd "<C-return>") 'prelude-smart-open-line)
+
