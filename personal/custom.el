@@ -20,7 +20,10 @@
     (("C-<right>")
      ("C-<left>")
      ("C-(" . sp-forward-slurp-sexp)
-     ("C-)" . sp-forward-barf-sexp)))))
+     ("C-)" . sp-forward-barf-sexp))))
+ '(which-key-idle-delay 3.0)
+ '(which-key-mode t)
+ '(which-key-popup-type (quote minibuffer)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

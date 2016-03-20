@@ -48,3 +48,18 @@
 ; Binding for newline
 (global-set-key (kbd "<C-return>") 'prelude-smart-open-line)
 
+; Bindings for mousewheel horizontal scrolling
+(global-set-key (kbd "<S-wheel-down>") '(lambda nil (interactive) (scroll-left 15)))
+(global-set-key (kbd "<S-double-wheel-down>") '(lambda nil (interactive) (scroll-left 15)))
+(global-set-key (kbd "<S-triple-wheel-down>") '(lambda nil (interactive) (scroll-left 15)))
+(global-set-key (kbd "<S-wheel-up>") '(lambda nil (interactive) (scroll-right 15)))
+(global-set-key (kbd "<S-double-wheel-up>") '(lambda nil (interactive) (scroll-right 15)))
+(global-set-key (kbd "<S-triple-wheel-up>") '(lambda nil (interactive) (scroll-right 15)))
+
+; Bindings for text scale adjustment via scrollwheel
+(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-double-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-triple-wheel-up>") 'text-scale-increase)
+(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+(global-set-key (kbd "<C-double-wheel-down>") 'text-scale-decrease)
+(global-set-key (kbd "<C-triple-wheel-down>") 'text-scale-decrease)
