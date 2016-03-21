@@ -25,6 +25,9 @@
 (global-unset-key (kbd "<mouse-2>"))
 (global-set-key (kbd "<mouse-2>") 'mc/add-cursor-on-click)
 
+; Bind additional yank command hotkey
+(global-set-key (kbd "C-S-v") 'yank)
+
 ; Unbind suspending the frame and bind it to undo instead
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'undo-tree-undo)
