@@ -24,3 +24,5 @@ tramp
 *.dat
 /games
 async-bytecomp.log
+anaconda-mode
+.mc-lists.el
