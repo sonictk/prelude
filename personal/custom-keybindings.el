@@ -70,3 +70,6 @@
 (global-set-key (kbd "<C-double-wheel-down>") 'text-scale-decrease)
 (global-set-key (kbd "<C-triple-wheel-down>") 'text-scale-decrease)
 (global-set-key (kbd "<C-mouse-5>") 'text-scale-decrease)
+
+; Set ECB mode to use LMB instead of MMB for selection
+(setq ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))

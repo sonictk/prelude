@@ -168,3 +168,6 @@
     (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-12"))
     (set-face-attribute 'default nil :font "Literation Mono Powerline-12")
 )
+
+; Disable tip of the day
+(setq ecb-tip-of-the-day nil)
