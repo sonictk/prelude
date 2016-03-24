@@ -18,6 +18,7 @@
 
 ; Set cursor display attributes
 (setq-default cursor-type 'box)
+(set-cursor-color "YellowGreen")
 
 ; Save the window layout on exit
 (desktop-save-mode 1)
