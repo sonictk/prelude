@@ -62,11 +62,24 @@
 ; For now only display the line numbers when goto line is activated
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
+; Define custom functions
+; Allow for going to specific line number
 (defun goto-line-with-feedback ()   "Show line numbers temporarily, while prompting for the line number input"   (interactive)   (unwind-protect
       (progn
         (nlinum-mode 1)
         (goto-line (read-number "Goto line: ")))
     (nlinum-mode -1)))
+
+; Function to kill all other buffers apart from the current one
+(defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer 
+        (delq (current-buffer) 
+            (remove-if-not 'buffer-file-name (buffer-list))
+        )
+    )
+)
 
 ; Disable auto-saving buffers
 (setq auto-save-default nil)
