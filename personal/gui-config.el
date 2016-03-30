@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8))
+(prelude-require-packages '(multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8 sphinx-doc))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -149,6 +149,14 @@
 ; Enable autocomplete mode only for C++, Python, and other scripting languages that would make sense
 (global-auto-complete-mode t)
 (add-to-list 'ac-modes 'sql-mode)
+
+; Enable generating Sphinx-compatible docstrings automatically for Python with C-c M-d
+(add-hook 'python-mode-hook (
+        lambda ()
+        (require 'sphinx-doc)
+        (sphinx-doc-mode t)
+    )
+)
 
 ; Setup GDB debugger to display multi view for debugging by default
 (setq
