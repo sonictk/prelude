@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8 sphinx-doc))
+(prelude-require-packages '(multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -153,7 +153,6 @@
 ; Enable generating Sphinx-compatible docstrings automatically for Python with C-c M-d
 (add-hook 'python-mode-hook (
         lambda ()
-        (require 'sphinx-doc)
         (sphinx-doc-mode t)
     )
 )
