@@ -150,7 +150,7 @@
 (global-auto-complete-mode t)
 (add-to-list 'ac-modes 'sql-mode)
 
-; Enable generating Sphinx-compatible docstrings automatically for Python with C-c M-d
+; Enable generating Sphinx-compatible docstrings automatically for Python with C-c C-d
 (add-hook 'python-mode-hook (
         lambda ()
         (sphinx-doc-mode t)
