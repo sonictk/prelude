@@ -157,6 +157,49 @@
     )
 )
 
+; Enable automatic settings for compiling projects for various different languages
+(add-hook 'c++-mode-hook
+    (lambda ()
+        (unless (file-exists-p "Makefile")
+            (set (make-local-variable 'compile-command)
+                (let* ((file (file-name-nondirectory buffer-    file-name))
+                    (executable (convert-filename-to-executable file)))
+                        (concat "g++ -g -Wall -o "
+                            (file-name-sans-extension file)
+                             " "
+                             file
+                             " && "
+                             executable
+                        )
+                )
+            )
+        )
+    )
+)
+
+(add-hook 'c-mode-hook
+      (lambda ()
+        (unless (file-exists-p "Makefile")
+          (set (make-local-variable 'compile-command)
+               (let* ((file (file-name-nondirectory buffer-file-name))
+                      (executable (convert-filename-to-executable file)))
+                 (concat "gcc -g -ansi -Wall -Wpedantic -Wextra -Wc++-compat -Wconversion -o "
+                         (file-name-sans-extension file)
+                         " "
+                         file
+                         " && "
+                         executable))))))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+              (set (make-local-variable 'compile-command)
+                   (concat "python " buffer-file-name))))
+
+(add-hook 'perl-mode-hook
+          (lambda ()
+              (set (make-local-variable 'compile-command)
+                   (concat "python " buffer-file-name))))
+
 ; Setup GDB debugger to display multi view for debugging by default
 (setq
  ;; use gdb-many-windows by default
