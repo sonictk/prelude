@@ -10,14 +10,23 @@
 
 ;;; Code:
 ; Set default fonts and sizes
-(add-to-list 'initial-frame-alist '(font . "Literation Mono Powerline-10"))
-(add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
-(set-face-attribute 'default nil :font "Literation Mono Powerline-10")
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (when (member "Literation Mono Powerline" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Literation Mono Powerline-10"))
+    (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))))
+ ((string-equal system-type "darwin") ; Mac OS X
+  (when (member "Literation Mono Powerline" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Literation Mono Powerline-10"))
+    (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))))
+ ((string-equal system-type "gnu/linux") ; linux
+  (when (member "Literation Mono Powerline" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Liberation Mono for Powerline-10"))
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono for Powerline-10")))))
 ; Check if running on Macbook based off hostname and set the font size accordingly
 (if (string-equal system-name "sonictk-mbp.local") 
     ;; Set custom font as default global font
     (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-12"))
-    (add-to-list 'initial-frame-alist '(font . "Literation Mono Powerline-12"))
     (set-face-attribute 'default nil :font "Literation Mono Powerline-12")
 )
 ; Stop Emacs from losing undo information by
