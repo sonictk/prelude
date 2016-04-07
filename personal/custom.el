@@ -13,6 +13,8 @@
  '(minimap-mode t)
  '(minimap-width-fraction 0.1)
  '(minimap-window-location (quote right))
+ '(pe/follow-current t)
+ '(pe/omit-gitignore t)
  '(scroll-bar-mode nil)
  '(sp-base-key-bindings nil)
  '(sp-override-key-bindings
