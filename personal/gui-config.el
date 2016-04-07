@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(multiple-cursors minimap whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8 project-explorer))
+(prelude-require-packages '(multiple-cursors whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8 project-explorer yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -234,3 +234,6 @@
 
 ; Disable tip of the day
 (setq ecb-tip-of-the-day nil)
+
+; Global scrollbar mode
+(global-yascroll-bar-mode 1)
