@@ -252,7 +252,7 @@
 (setq jedi:tooltip-method '(pos-tip))
 (autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)
+; (setq jedi:setup-keys t)
 
 ; Run Python inferior process automatically upon invoking Python mode to avoid eldoc errors
 (defun my-run-python ()
