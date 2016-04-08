@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(multiple-cursors whitespace nlinum fill-column-indicator auto-complete-clang ecb helm-gtags pylint py-autopep8 project-explorer yascroll))
+(prelude-require-packages '(multiple-cursors whitespace nlinum fill-column-indicator auto-complete-clang ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -247,3 +247,14 @@
                           1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
+
+; Setup Jedi Python autocompletion
+(setq jedi:tooltip-method '(pos-tip))
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
+
+; Run Python inferior process automatically upon invoking Python mode to avoid eldoc errors
+(defun my-run-python ()
+    (run-python (python-shell-parse-command)))
+(add-hook 'python-mode-hook 'my-run-python)
