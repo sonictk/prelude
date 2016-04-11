@@ -10,8 +10,21 @@
 
 ;;; Code:
 ;; Set custom font as default global font
-(add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
-(set-face-attribute 'default nil :font "Literation Mono Powerline-10")
+;(add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
+;(set-face-attribute 'default nil :font "Literation Mono Powerline-10")
+(cond
+ ((string-equal system-type "windows-nt") ; Microsoft Windows
+  (when (member "Literation Mono Powerline" (font-family-list))
+    (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
+    (set-face-attribute 'default nil :font "Literation Mono Powerline-10")))
+ ((string-equal system-type "darwin") ; Mac OS X
+  (when (member "Literation Mono Powerline" (font-family-list))
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono Powerline-10"))
+    (set-face-attribute 'default nil :font "Liberation Mono Powerline-10")))
+ ((string-equal system-type "gnu/linux") ; linux
+  (when (member "Literation Mono Powerline" (font-family-list))
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono Powerline-10"))
+    (set-face-attribute 'default nil :font "Liberation Mono Powerline-10"))))
 
 ; Stop Emacs from losing undo information by
 ; setting very high limits for undo buffers
