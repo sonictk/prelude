@@ -262,3 +262,6 @@
 ; Set flag so that will not be prompted to kill running process on closing Emacs every single time
 (add-hook 'comint-exec-hook 
       (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
+; Set Python PDB debugger default command to use ipdb instead
+(setq gud-pdb-command-name "python -m pdb")
