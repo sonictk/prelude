@@ -111,10 +111,14 @@
 
 (add-hook 'text-mode-hook 'my-set-margins)
 
-; Set tab width to 4
+; Set tab width to 4 by default and use spaces by default
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent t)
+
+; Automatically use tabs for C++ code
+(add-hook 'c-mode-common-hook
+    (lambda () (setq indent-tabs-mode t)))
 
 ; C++ Autocomplete for clang
 (require 'auto-complete-clang)
