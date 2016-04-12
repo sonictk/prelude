@@ -28,3 +28,4 @@ anaconda-mode
 .mc-lists.el
 .emacs.desktop*
 helm-doc.org
+srecode-map.el

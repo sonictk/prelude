@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(multiple-cursors whitespace nlinum fill-column-indicator auto-complete-clang ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
+(prelude-require-packages '(dtrt-indent multiple-cursors whitespace nlinum fill-column-indicator auto-complete-clang ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -117,8 +117,10 @@
 (setq-default tab-always-indent t)
 
 ; Automatically use tabs for C++ code
-(add-hook 'c-mode-common-hook
-    (lambda () (setq indent-tabs-mode t)))
+(add-hook 'c-mode-common-hook 
+  (lambda()(dtrt-indent-mode t))
+  (lambda()(indent-tabs-mode t))
+)
 
 ; C++ Autocomplete for clang
 (require 'auto-complete-clang)
