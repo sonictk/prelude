@@ -183,7 +183,6 @@
 ; Enable completion of C/C++ headers
 (require 'company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
-(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
 
 ; Set autocomplete header search paths based on OS type
 ; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
