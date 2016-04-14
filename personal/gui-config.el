@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(dtrt-indent multiple-cursors whitespace nlinum fill-column-indicator irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
+(prelude-require-packages '(auto-complete-clang dtrt-indent multiple-cursors whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -272,6 +272,7 @@
 ; Set Python PDB debugger default command to use ipdb instead
 (setq gud-pdb-command-name "python -m pdb")
 
+; Use irony autocomplete for C languages
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
@@ -285,3 +286,30 @@
     'irony-completion-at-point-async))
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(setq w32-pipe-read-delay 0)
+
+; Use company-mode with irony
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(setq company-backends (delete 'company-semantic company-backends))
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends 'company-irony))
+
+; Use tab-completion with no delay
+(setq company-idle-delay 0)
+(define-key c-mode-map [(control tab)] 'company-complete)
+(define-key c++-mode-map [(control tab)] 'company-complete)
+
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+)
+
+; Highlight doxygen comments
+(defun my-doxymacs-font-lock-hook ()
+    (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+        (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)

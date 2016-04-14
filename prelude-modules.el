@@ -36,3 +36,8 @@
 (require 'prelude-web) ;; Emacs mode for web templates
 (require 'prelude-xml)
 (require 'prelude-yaml)
+
+; Custom modules
+(require 'xml-parse)
+(require 'tempo)
+(require 'doxymacs)
