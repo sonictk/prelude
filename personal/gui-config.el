@@ -214,6 +214,28 @@
  ;((string-equal system-type "darwin") ; Mac
  ;)
 )
+
+(if (string-equal system-name "ylsiew-lid.corp.blizzard.net") 
+    (setq ac-clang-flags
+          (mapcar (lambda (item)(concat "-I" item))
+                  (split-string
+         "
+         /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7
+         /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux
+         /usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/backward
+         /usr/local/include
+         /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include
+         /usr/include
+         "
+    )))
+    (add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7")
+    (add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/x86_64-redhat-linux")
+    (add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-redhat-linux/4.4.7/../../../../include/c++/4.4.7/backward")
+    (add-to-list 'company-c-headers-path-system "/usr/local/include")
+    (add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-redhat-linux/4.4.7/include")
+    (add-to-list 'company-c-headers-path-system "/usr/include")
+)
+
 ; Highlight doxygen comments
 (defun my-doxymacs-font-lock-hook ()
     (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
