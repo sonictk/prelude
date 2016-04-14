@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete-clang dtrt-indent multiple-cursors whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
+(prelude-require-packages '(auto-complete auto-complete-clang company-c-headers dtrt-indent goto-last-change multiple-cursors whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -137,8 +137,8 @@
      helm-gtags-suggested-key-mapping t
  )
 
-(require 'helm-gtags)
 ;; Enable helm-gtags-mode
+(require 'helm-gtags)
 (add-hook 'dired-mode-hook 'helm-gtags-mode)
 (add-hook 'eshell-mode-hook 'helm-gtags-mode)
 (add-hook 'c-mode-hook 'helm-gtags-mode)
@@ -151,6 +151,75 @@
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+
+; Use irony autocomplete for C languages
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(setq w32-pipe-read-delay 0)
+
+; Use company-mode with irony
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(setq company-backends (delete 'company-semantic company-backends))
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends 'company-irony))
+
+; Use tab-completion with no delay
+(setq company-idle-delay 0)
+(define-key c-mode-map [(control tab)] 'company-complete)
+(define-key c++-mode-map [(control tab)] 'company-complete)
+
+; Enable completion of C/C++ headers
+(require 'company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
+
+; Set autocomplete header search paths based on OS type
+; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
+(cond
+ ((string-equal system-type "windows-nt") ; any flavor of Windows
+    (setq ac-clang-flags
+          (mapcar (lambda (item)(concat "-I" item))
+                  (split-string
+    "
+    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include
+    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../include
+    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed
+    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/include
+    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0
+    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/x86_64-w64-mingw32
+    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/backward/usr/include
+    "
+    )))
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include")
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../include")
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed")
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/include")
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0")
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/x86_64-w64-mingw32")
+    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/backward/usr/include")
+  )
+ ;((string-equal system-type "gnu/linux")
+ ; )
+ ;((string-equal system-type "darwin") ; Mac
+ ;)
+)
+; Highlight doxygen comments
+(defun my-doxymacs-font-lock-hook ()
+    (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+        (doxymacs-font-lock)))
+(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
 ; Enable autocomplete mode only for C++, Python, and other scripting languages that would make sense
 (global-auto-complete-mode t)
@@ -272,44 +341,8 @@
 ; Set Python PDB debugger default command to use ipdb instead
 (setq gud-pdb-command-name "python -m pdb")
 
-; Use irony autocomplete for C languages
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
+; Disable subword mode globally
+(global-subword-mode 0)
 
-;; replace the `completion-at-point' and `complete-symbol' bindings in
-;; irony-mode's buffers by irony-mode's function
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(setq w32-pipe-read-delay 0)
-
-; Use company-mode with irony
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-(setq company-backends (delete 'company-semantic company-backends))
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends 'company-irony))
-
-; Use tab-completion with no delay
-(setq company-idle-delay 0)
-(define-key c-mode-map [(control tab)] 'company-complete)
-(define-key c++-mode-map [(control tab)] 'company-complete)
-
-(setq
- ;; use gdb-many-windows by default
- gdb-many-windows t
-
- ;; Non-nil means display source file containing the main routine at startup
- gdb-show-main t
-)
-
-; Highlight doxygen comments
-(defun my-doxymacs-font-lock-hook ()
-    (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-        (doxymacs-font-lock)))
-(add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+; Disable flycheck mode globally
+(global-flycheck-mode -1)
