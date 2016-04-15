@@ -73,3 +73,6 @@
 
 ; Set ECB mode to use LMB instead of MMB for selection
 (setq ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1))
+
+; Set binding for code navigation
+(global-set-key (kbd "<C-f12>") 'helm-semantic-or-imenu)
