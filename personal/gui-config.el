@@ -186,34 +186,34 @@
 
 ; Set autocomplete header search paths based on OS type
 ; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
-(cond
- ((string-equal system-type "windows-nt") ; any flavor of Windows
-    (setq ac-clang-flags
-          (mapcar (lambda (item)(concat "-I" item))
-                  (split-string
-    "
-    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include
-    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../include
-    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed
-    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/include
-    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0
-    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/x86_64-w64-mingw32
-    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/backward/usr/include
-    "
-    )))
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include")
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../include")
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed")
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/include")
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0")
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/x86_64-w64-mingw32")
-    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/backward/usr/include")
-  )
+;(cond
+; ((string-equal system-type "windows-nt") ; any flavor of Windows
+;    (setq ac-clang-flags
+;          (mapcar (lambda (item)(concat "-I" item))
+;                  (split-string
+;    "
+;    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include
+;    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../include
+;    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed
+;    C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/include
+;    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0
+;    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/x86_64-w64-mingw32
+;    C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/backward/usr/include
+;    "
+;    )))
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include")
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../include")
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/include-fixed")
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/include")
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0")
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/x86_64-w64-mingw32")
+;    (add-to-list 'company-c-headers-path-system "C:/msys64/mingw64/lib/gcc/../../include/c++/5.3.0/backward/usr/include")
+;  )
  ;((string-equal system-type "gnu/linux")
  ; )
  ;((string-equal system-type "darwin") ; Mac
  ;)
-)
+;)
 ; Highlight doxygen comments
 (defun my-doxymacs-font-lock-hook ()
     (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
