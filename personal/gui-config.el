@@ -248,8 +248,12 @@
  gdb-show-main t
  )
 
-; Enable vertical rule for Python source files
+; Enable vertical rule for Python/C/C++ source files
 (add-hook 'python-mode-hook (lambda ()
+    (fci-mode t)
+))
+
+(add-hook 'c-mode-common-hook (lambda ()
     (fci-mode t)
 ))
 (setq fci-rule-column 80)
