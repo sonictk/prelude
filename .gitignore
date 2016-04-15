@@ -68,3 +68,4 @@ install_manifest.txt
 irony/
 src/
 test/
+Makefile
