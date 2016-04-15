@@ -111,17 +111,6 @@
 
 (add-hook 'text-mode-hook 'my-set-margins)
 
-; Set tab width to 4 by default and use spaces by default
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq-default tab-always-indent t)
-
-; Automatically use tabs for C++ code
-(add-hook 'c-mode-common-hook 
-  (lambda()(dtrt-indent-mode t))
-  (lambda()(indent-tabs-mode t))
-)
-
 ; C++ Autocomplete for clang
 (require 'auto-complete-clang)
 (require 'auto-complete)
@@ -358,3 +347,14 @@
 (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+
+; Set tab width to 4 by default and use spaces by default
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-always-indent t)
+
+; Automatically use tabs for C++ code
+(add-hook 'c-mode-common-hook 
+  (lambda()(dtrt-indent-mode t))
+  (lambda()(indent-tabs-mode t))
+)
