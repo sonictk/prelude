@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete auto-complete-clang company-c-headers dtrt-indent goto-last-change multiple-cursors whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
+(prelude-require-packages '(auto-complete auto-complete-clang company-c-headers dtrt-indent goto-last-change helm-ag multiple-cursors whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
