@@ -40,10 +40,25 @@
 (global-set-key (kbd "C-x <") '(lambda ()(interactive)(scroll-right 15)))
 
 ; Bindings for commenting
+(defun comment-or-uncomment-region-or-line()
+  (interactive)
+  (let ((start (line-beginning-position))
+        (end (line-end-position)))
+    (when (or (not transient-mark-mode) (region-active-p))
+      (setq start (save-excursion
+                    (goto-char (region-beginning))
+                    (beginning-of-line)
+                    (point))
+            end (save-excursion
+                  (goto-char (region-end))
+                  (end-of-line)
+                  (point))))
+    (comment-or-uncomment-region start end)))
 (global-unset-key (kbd "C-c C-c"))
 (global-unset-key (kbd "C-/"))
-(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-/") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-c C-/") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-/") 'comment-or-uncomment-region-or-line)
 
 ; Bindings for opening recent files
 (global-set-key (kbd "C-x C-S-f") 'recentf-open-files)
