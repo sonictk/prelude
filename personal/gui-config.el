@@ -36,6 +36,7 @@
 ; Show whitespace
 (require 'whitespace)
 (global-whitespace-mode t)
+(setq show-trailing-whitespace t)
 (setq whitespace-style (quote
    (face spaces tabs space-mark tab-mark)))
 (setq whitespace-display-mappings
