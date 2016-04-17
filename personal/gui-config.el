@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete auto-complete-clang company-c-headers dtrt-indent goto-last-change helm-ag multiple-cursors whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer yascroll))
+(prelude-require-packages '(auto-complete auto-complete-clang company-c-headers csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -363,3 +363,6 @@
   (lambda()(dtrt-indent-mode t))
   (lambda()(indent-tabs-mode t))
 )
+
+; Automatically setup omnisharp when editing C# solution
+; (add-hook 'csharp-mode-hook 'omnisharp-mode)

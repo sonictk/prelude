@@ -41,3 +41,4 @@
 (require 'xml-parse)
 (require 'tempo)
 (require 'doxymacs)
+(require 'hlsl-mode)
