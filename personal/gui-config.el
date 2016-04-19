@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete auto-complete-clang company-c-headers csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc jedi helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
+(prelude-require-packages '(auto-complete auto-complete-clang back-button company-c-headers company-jedi company-anaconda csharp-mode dtrt-indent goto-last-change glsl-mode jedi multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -24,11 +24,12 @@
 (desktop-save-mode 1)
 (setq desktop-save 'ask-if-new)
 
-; Start maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
 ; Show matching parentheses
 (show-smartparens-mode 1)
+
+; Allow for navigating between buffers
+(require 'back-button)
+(back-button-mode 1)
 
 ; Enable multiple cursors
 (require 'multiple-cursors)
@@ -303,18 +304,14 @@
     (run-python (python-shell-parse-command)))
 (add-hook 'python-mode-hook 'my-run-python)
 
-; Set flag so that will not be prompted to kill running process on closing Emacs every single time
-(add-hook 'comint-exec-hook 
-      (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
-
 ; Set Python PDB debugger default command to use ipdb instead
 (setq gud-pdb-command-name "python -m pdb")
 
-; Disable subword mode globally
+; Disable subword mode globally by default
 (global-subword-mode 0)
 
-; Disable flycheck mode globally
-; (global-flycheck-mode -1)
+; Disable flycheck mode globally by default
+(global-flycheck-mode -1)
 
 ; Restore session after ediff session
 (defvar my-ediff-last-windows nil)
@@ -366,3 +363,10 @@
 
 ; Automatically setup omnisharp when editing C# solution
 ; (add-hook 'csharp-mode-hook 'omnisharp-mode)
+
+; Set flag so that will not be prompted to kill running process on closing Emacs every single time
+(add-hook 'comint-exec-hook 
+      (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
+; Start maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
