@@ -314,7 +314,7 @@
 (global-subword-mode 0)
 
 ; Disable flycheck mode globally
-(global-flycheck-mode -1)
+; (global-flycheck-mode -1)
 
 ; Restore session after ediff session
 (defvar my-ediff-last-windows nil)
