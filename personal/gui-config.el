@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete auto-complete-clang back-button company-c-headers company-jedi company-anaconda csharp-mode dtrt-indent goto-last-change glsl-mode jedi multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
+(prelude-require-packages '(auto-complete back-button company-jedi company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -118,7 +118,6 @@
 (require 'auto-complete)
 (define-key c++-mode-map (kbd "C-S-SPC") 'ac-complete-clang)
 
-
 ; Use irony autocomplete for C languages
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
@@ -138,9 +137,11 @@
 ; Use company-mode with irony
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 (setq company-backends (delete 'company-semantic company-backends))
+(require 'company-irony-c-headers)
+;; Load with `irony-mode` as a grouped backend
 (eval-after-load 'company
   '(add-to-list
-    'company-backends 'company-irony))
+    'company-backends '(company-irony-c-headers company-irony)))
 
 ; Use tab-completion with no delay
 (setq company-idle-delay 0)
@@ -148,8 +149,8 @@
 (define-key c++-mode-map [(control tab)] 'company-complete)
 
 ; Enable completion of C/C++ headers
-(require 'company-c-headers)
-(add-to-list 'company-backends 'company-c-headers)
+; (require 'company-c-headers)
+; (add-to-list 'company-backends 'company-c-headers)
 
 ; Set autocomplete header search paths based on OS type
 ; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
@@ -181,6 +182,7 @@
  ;((string-equal system-type "darwin") ; Mac
  ;)
 ;)
+
 ; Highlight doxygen comments
 (defun my-doxymacs-font-lock-hook ()
     (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
@@ -269,6 +271,7 @@
 
 ; Disable guru-mode prompts and tips
 (setq prelude-guru nil)
+(setq guru-global-mode nil)
 
 ; Check if running on Macbook based off hostname and set the font size accordingly
 (if (string-equal system-name "sonictk-mbp.local") 
@@ -294,15 +297,16 @@
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
 ; Setup Jedi Python autocompletion
-(setq jedi:tooltip-method '(pos-tip))
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
-; (setq jedi:setup-keys t)
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ; Run Python inferior process automatically upon invoking Python mode to avoid eldoc errors
-(defun my-run-python ()
-    (run-python (python-shell-parse-command)))
-(add-hook 'python-mode-hook 'my-run-python)
+; TODO: This is causing eldoc to completely explode and hang
+; (defun my-run-python ()
+;     (run-python (python-shell-parse-command)))
+; (add-hook 'python-mode-hook 'my-run-python)
 
 ; Set Python PDB debugger default command to use ipdb instead
 (setq gud-pdb-command-name "python -m pdb")
@@ -370,3 +374,9 @@
 
 ; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(setq python-shell-prompt-detect-failure-warning nil)
+
+; Disable eldoc since it's causing hangs on Python code, only enable for C/C++
+(require 'c-eldoc)
+(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
