@@ -42,3 +42,6 @@
 (require 'tempo)
 (require 'doxymacs)
 (require 'hlsl-mode)
+(require 'sphinx-doc)
+(require 'grep)
+
