@@ -99,4 +99,11 @@
     (global-set-key (kbd "<C-tab>") 'company-jedi)
 ))
 
-
+; Override the default keybindings for buffer mark navigation
+(setq back-button-smartrep-prefix              "C-c")
+(setq back-button-global-keystrokes          '("C-c <C-SPC>"))
+(setq back-button-global-backward-keystrokes '("C-c <C-left>"))
+(setq back-button-global-forward-keystrokes  '("C-c <C-right>"))
+(setq back-button-local-keystrokes           '("C-c <SPC>"))
+(setq back-button-local-backward-keystrokes  '("C-c <left>"))
+(setq back-button-local-forward-keystrokes   '("C-c <right>"))

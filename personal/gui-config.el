@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete back-button company-jedi company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
+(prelude-require-packages '(auto-complete back-button jedi-core company-jedi company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -301,6 +301,7 @@
   (add-to-list 'company-backends 'company-jedi))
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
 
 ; Run Python inferior process automatically upon invoking Python mode to avoid eldoc errors
 ; TODO: This is causing eldoc to completely explode and hang
@@ -368,10 +369,6 @@
 ; Automatically setup omnisharp when editing C# solution
 ; (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
-; Set flag so that will not be prompted to kill running process on closing Emacs every single time
-(add-hook 'comint-exec-hook 
-      (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
-
 ; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -380,3 +377,8 @@
 ; Disable eldoc since it's causing hangs on Python code, only enable for C/C++
 (require 'c-eldoc)
 (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+
+; Set flag so that will not be prompted to kill running process on closing Emacs every single time
+(add-hook 'comint-exec-hook 
+      (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
+
