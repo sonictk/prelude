@@ -405,3 +405,7 @@
    (local-set-key (kbd "C-c C-c") 'etom-send-buffer-py)
    (local-set-key (kbd "C-c C-l") 'etom-send-buffer-py)
    (local-set-key (kbd "C-c C-z") 'etom-show-buffer)))
+
+; Add MEL mode syntax highlighting
+(add-to-list 'auto-mode-alist '("\\.mel$" . mel-mode))
+(autoload 'mel-mode "mel-mode" nil t)
