@@ -382,3 +382,26 @@
 (add-hook 'comint-exec-hook 
       (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
 
+; Allow for communication between emacs and Maya
+(add-hook
+ 'mel-mode-hook
+ (lambda ()
+   (require 'etom)
+   (setq etom-default-host "localhost")
+   (setq etom-default-port 2222)
+   (local-set-key (kbd "C-c C-r") 'etom-send-region)
+   (local-set-key (kbd "C-c C-c") 'etom-send-buffer)
+   (local-set-key (kbd "C-c C-l") 'etom-send-buffer)
+   (local-set-key (kbd "C-c C-z") 'etom-show-buffer)))
+
+; For Python
+(add-hook
+ 'python-mode-hook
+ (lambda ()
+   (require 'etom)
+   (setq etom-default-host "localhost")
+   (setq etom-default-port 2222)
+   (local-set-key (kbd "C-c C-r") 'etom-send-region-py)
+   (local-set-key (kbd "C-c C-c") 'etom-send-buffer-py)
+   (local-set-key (kbd "C-c C-l") 'etom-send-buffer-py)
+   (local-set-key (kbd "C-c C-z") 'etom-show-buffer)))

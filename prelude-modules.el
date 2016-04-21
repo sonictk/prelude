@@ -44,4 +44,6 @@
 (require 'hlsl-mode)
 (require 'sphinx-doc)
 (require 'grep)
+(require 'mel-mode)
+(require 'etom)
 
