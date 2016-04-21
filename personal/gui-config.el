@@ -410,3 +410,6 @@
 ; Add MEL mode syntax highlighting
 (add-to-list 'auto-mode-alist '("\\.mel$" . mel-mode))
 (autoload 'mel-mode "mel-mode" nil t)
+
+; Global line numbers for everything
+; (global-nlinum-mode t)
