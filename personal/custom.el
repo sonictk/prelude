@@ -4,8 +4,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ac-auto-show-menu nil)
+ '(ac-auto-start nil)
+ '(ac-candidate-limit 50)
  '(ac-trigger-key "C-S-SPC")
+ '(ac-use-fuzzy t)
  '(ecb-options-version "2.40")
+ '(global-auto-complete-mode t)
  '(pe/follow-current t)
  '(pe/omit-gitignore t)
  '(scroll-bar-mode nil)

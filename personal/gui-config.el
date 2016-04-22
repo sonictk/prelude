@@ -189,11 +189,6 @@
         (doxymacs-font-lock)))
 (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
 
-; Enable autocomplete mode only for C++, Python, and other scripting languages that would make sense
-; TODO: Figure out how to only enable auto complete mode for specific keypress, it's interfering with irony and everything else
-(global-auto-complete-mode nil)
-; (add-to-list 'ac-modes 'sql-mode)
-
 ; Enable generating Sphinx-compatible docstrings automatically for Python with C-c C-d
 (add-hook 'python-mode-hook (
         lambda ()
