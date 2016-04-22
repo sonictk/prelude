@@ -403,3 +403,7 @@
 
 ; Global line numbers for everything
 ; (global-nlinum-mode t)
+
+; Add syntax highlighting for escape characters
+(add-hook 'prog-mode-hook '(lambda () 
+        (highlight-regexp "%[[:alpha:]]\\|\\\\[[:alpha:]]" "hi-blue-b")))
