@@ -107,3 +107,6 @@
 (setq back-button-local-keystrokes           '("C-c <SPC>"))
 (setq back-button-local-backward-keystrokes  '("C-c <left>"))
 (setq back-button-local-forward-keystrokes   '("C-c <right>"))
+
+; Keybindings for inserting doxygen documentation in C/C++/Java mode
+
