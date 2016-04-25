@@ -144,7 +144,7 @@
     'company-backends '(company-irony-c-headers company-irony)))
 
 ; Use tab-completion with no delay
-(setq company-idle-delay 0)
+(setq company-idle-delay 0.5)
 (define-key c-mode-map [(control tab)] 'company-complete)
 (define-key c++-mode-map [(control tab)] 'company-complete)
 
