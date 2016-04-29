@@ -358,7 +358,7 @@
 ; Automatically use spaces for Python mode and set tab-width as well
 (add-hook 'python-mode-hook
       (lambda ()
-        (setq indent-tabs-mode t)
+        (setq indent-tabs-mode nil)
         (setq tab-width 4)
         (setq python-indent 4)))
 
