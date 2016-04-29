@@ -351,6 +351,17 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-always-indent t)
 
+(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
+                          64 68 72 76 80 84 88 92 96 100 104 108 112
+                          116 120))
+
+; Automatically use spaces for Python mode and set tab-width as well
+(add-hook 'python-mode-hook
+      (lambda ()
+        (setq indent-tabs-mode t)
+        (setq tab-width 4)
+        (setq python-indent 4)))
+
 ; Automatically use tabs for C++ code
 (add-hook 'c-mode-common-hook 
   (lambda()(dtrt-indent-mode t))
