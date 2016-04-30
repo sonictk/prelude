@@ -108,5 +108,9 @@
 (setq back-button-local-backward-keystrokes  '("C-c <left>"))
 (setq back-button-local-forward-keystrokes   '("C-c <right>"))
 
+(global-set-key (kbd "<mouse-4>") 'back-button-global-backward)
+(global-set-key (kbd "<mouse-5>") 'back-button-global-forward)
+(global-set-key (kbd "C-<mouse-4>") 'back-button-local-forward)
+(global-set-key (kbd "C-<mouse-5>") 'back-button-local-forward)
 ; Keybindings for inserting doxygen documentation in C/C++/Java mode
 
