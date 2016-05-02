@@ -289,10 +289,11 @@
 
 ; Setup Jedi Python autocompletion
 (defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
-
+  (add-to-list 'company-backends 'company-jedi)
+  (jedi:ac-setup)
+  (jedi:setup)
+)
 (add-hook 'python-mode-hook 'my/python-mode-hook)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
 
 ; Run Python inferior process automatically upon invoking Python mode to avoid eldoc errors
 ; TODO: This is causing eldoc to completely explode and hang
