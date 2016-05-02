@@ -288,10 +288,12 @@
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
 ; Setup Jedi Python autocompletion
+; TODO: Need to figure out how to sync jedi and anaconda keybindings together, especially anaconda mode
 (defun my/python-mode-hook ()
   (add-to-list 'company-backends 'company-jedi)
   (jedi:ac-setup)
   (jedi:setup)
+  (define-key jedi-mode-map (kbd "<M-.>") 'jedi:goto-definition)
 )
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
