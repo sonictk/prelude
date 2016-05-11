@@ -197,11 +197,17 @@
 )
 
 ; Enable automatic settings for compiling projects for various different languages
+(defun convert-filename-to-executable (file)
+  (if (eq system-type 'windows-nt)
+      (concat (file-name-sans-extension file) ".exe")
+    ;; linux
+    (concat "./" (file-name-sans-extension file))))
+
 (add-hook 'c++-mode-hook
     (lambda ()
         (unless (file-exists-p "Makefile")
             (set (make-local-variable 'compile-command)
-                (let* ((file (file-name-nondirectory buffer-    file-name))
+                (let* ((file (file-name-nondirectory buffer-file-name))
                     (executable (convert-filename-to-executable file)))
                         (concat "g++ -g -Wall -o "
                             (file-name-sans-extension file)
@@ -209,10 +215,7 @@
                              file
                              " && "
                              executable
-                        )
-                )
-            )
-        )
+                        ))))
     )
 )
 
