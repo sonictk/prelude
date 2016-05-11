@@ -1,5 +1,5 @@
 ; Install all user-required packages first
-(prelude-require-packages '(auto-complete auto-complete-clang back-button jedi-core company-jedi company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button jedi-core company-jedi company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -114,6 +114,7 @@
 (add-hook 'text-mode-hook 'my-set-margins)
 
 ; C++ Autocomplete for clang
+(require 'fuzzy)
 (require 'auto-complete-clang)
 (require 'auto-complete)
 (define-key c++-mode-map (kbd "C-S-SPC") 'ac-complete-clang)
