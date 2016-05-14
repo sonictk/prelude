@@ -364,6 +364,9 @@
                           64 68 72 76 80 84 88 92 96 100 104 108 112
                           116 120))
 
+; Always just tab when hitting the tab key, do not use smart tabbing
+(setq tab-always-indent nil)
+(setq c-tab-always-indent nil)
 ; Automatically use spaces for Python mode and set tab-width as well
 (add-hook 'python-mode-hook
       (lambda ()
