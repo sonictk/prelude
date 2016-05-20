@@ -430,3 +430,17 @@
 ; Add syntax highlighting for escape characters
 (add-hook 'prog-mode-hook '(lambda () 
         (highlight-regexp "%[[:alpha:]]\\|\\\\[[:alpha:]]" "hi-blue-b")))
+
+(defun mouse-start-rectangle (start-event)
+  (interactive "e")
+  (deactivate-mark)
+  (mouse-set-point start-event)
+  (rectangle-mark-mode +1)
+  (let ((drag-event))
+    (track-mouse
+      (while (progn
+               (setq drag-event (read-event))
+               (mouse-movement-p drag-event))
+        (mouse-set-point drag-event)))))
+
+(global-set-key (kbd "M-S-<down-mouse-1>") #'mouse-start-rectangle)
