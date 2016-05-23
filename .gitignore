@@ -69,3 +69,4 @@ irony/
 src/
 test/
 Makefile
+.python-environments/
