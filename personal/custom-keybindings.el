@@ -92,7 +92,7 @@
 ; Set binding for code navigation
 (global-set-key (kbd "<C-f12>") 'helm-semantic-or-imenu)
 (global-set-key (kbd "C-x <f12>") 'helm-projectile-ag)
-(global-set-key (kbd "C-x C-a") 'helm-do-grep-ag)
+(global-set-key (kbd "C-x C-S-f") 'helm-do-grep-ag)
 
 ; Bindings for code completion
 (add-hook 'python-mode-hook (lambda ()
