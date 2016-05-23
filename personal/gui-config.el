@@ -298,8 +298,8 @@
   (require 'company-jedi)
   (add-to-list 'company-backends 'company-jedi)
   ; Temporary fix for now to get Maya completions, really need to figure out a way to add them via better project-specific venv solution 
-  (setq jedi:server-args
-      '("--sys-path" "C:/Programs/Maya-devkit/win/devkit/other/pymel/extras/completion/py"))
+  ;(setq jedi:server-args
+  ;    '("--sys-path" "C:/Programs/Maya-devkit/win/devkit/other/pymel/extras/completion/py"))
   ;(jedi:ac-setup)
 
   (jedi:setup)
