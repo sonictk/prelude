@@ -1,5 +1,10 @@
 ; Install all user-required packages first
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button jedi-core company-jedi company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
+; Special setup for elpy
+(require 'package)
+(add-to-list 'package-archives
+             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
+
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc elpy irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -63,6 +68,9 @@
 ; (global-nlinum-mode t)
 ; For now only display the line numbers when goto line is activated
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
+
+; Enable remote .dir-locals.el files to be found
+(setq enable-remote-dir-locals t)
 
 ; Define custom functions
 ; Allow for going to specific line number
@@ -294,16 +302,20 @@
 ; Setup Jedi Python autocompletion
 ; TODO: Need to figure out how to sync jedi and anaconda keybindings together, especially anaconda mode
 (defun my/python-mode-hook ()
-  (require 'jedi-core)
-  (require 'company-jedi)
-  (add-to-list 'company-backends 'company-jedi)
-  ; Temporary fix for now to get Maya completions, really need to figure out a way to add them via better project-specific venv solution 
-  ;(setq jedi:server-args
-  ;    '("--sys-path" "C:/Programs/Maya-devkit/win/devkit/other/pymel/extras/completion/py"))
-  ;(jedi:ac-setup)
+;   (require 'jedi-core)
+;   (require 'company-jedi)
+;   (add-to-list 'company-backends 'company-jedi)
+;   ; Temporary fix for now to get Maya completions, really need to figure out a way to add them via better project-specific venv solution 
+;   ;(setq jedi:server-args
+;   ;    '("--sys-path" "C:/Programs/Maya-devkit/win/devkit/other/pymel/extras/completion/py"))
+;   ;(jedi:ac-setup)
+; 
+;   (jedi:setup)
+;   (define-key jedi-mode-map (kbd "<M-.>") 'jedi:goto-definition)
 
-  (jedi:setup)
-  (define-key jedi-mode-map (kbd "<M-.>") 'jedi:goto-definition)
+    (package-initialize)
+    (elpy-enable)
+
 )
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 

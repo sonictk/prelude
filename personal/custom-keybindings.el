@@ -96,7 +96,7 @@
 
 ; Bindings for code completion
 (add-hook 'python-mode-hook (lambda ()
-    (global-set-key (kbd "<C-tab>") 'company-jedi)
+    (global-set-key (kbd "<C-tab>") 'company-complete)
 ))
 
 ; Override the default keybindings for buffer mark navigation

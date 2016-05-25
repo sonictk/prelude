@@ -14,6 +14,8 @@
  '(company-tooltip-align-annotations t)
  '(company-tooltip-limit 25)
  '(ecb-options-version "2.40")
+ '(elpy-rpc-backend "jedi")
+ '(elpy-rpc-timeout 5)
  '(global-auto-complete-mode t)
  '(pe/follow-current t)
  '(pe/omit-gitignore t)
