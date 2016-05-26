@@ -200,7 +200,6 @@
  ;((string-equal system-type "darwin") ; Mac
  ;)
 ;)
-
 ; Highlight doxygen comments
 (defun my-doxymacs-font-lock-hook ()
     (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
