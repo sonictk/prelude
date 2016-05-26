@@ -468,7 +468,7 @@
                (mouse-movement-p drag-event))
         (mouse-set-point drag-event)))))
 
-(global-set-key (kbd "M-S-<down-mouse-1>") #'mouse-start-rectangle)
+(global-set-key (kbd "S-<down-mouse-2>") 'mouse-start-rectangle)
 
 ; Virtualenv support
 (require 'virtualenvwrapper)
