@@ -6,6 +6,15 @@
 
 (prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc elpy irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
 
+;; BLIZZARD ONLY
+;; Because we are on Python 2.6 here, need to set the actual version of Python I want to use manually
+
+(setq python-shell-interpreter "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+(setq python-python-command "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+(setq elpy-rpc-python-command "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+(setq python-shell-interpreter "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+(setq pyvenv-virtualenvwrapper-python "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'monokai t)
