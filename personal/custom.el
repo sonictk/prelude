@@ -16,7 +16,7 @@
  '(ecb-options-version "2.40")
  '(elpy-modules
    (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-sane-defaults)))
+    (elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-yasnippet elpy-module-sane-defaults)))
  '(elpy-rpc-backend nil)
  '(elpy-rpc-timeout 5)
  '(global-auto-complete-mode t)
