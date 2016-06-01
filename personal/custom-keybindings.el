@@ -69,6 +69,9 @@
 ; Binding for newline
 (global-set-key (kbd "<C-return>") 'prelude-smart-open-line)
 
+; Binding for duplicating lines
+(global-set-key (kbd "C-c d") 'prelude-duplicate-current-line-or-region)
+
 ; Bindings for mousewheel horizontal scrolling
 (global-set-key (kbd "<S-wheel-down>") '(lambda nil (interactive) (scroll-right 15)))
 (global-set-key (kbd "<S-double-wheel-down>") '(lambda nil (interactive) (scroll-right 15)))
