@@ -28,6 +28,9 @@
 ; Bind additional yank command hotkey
 (global-set-key (kbd "C-S-v") 'yank)
 
+; Set new keybinding for browsing the kill ring
+(global-set-key (kbd "C-c y") 'browse-kill-ring)
+
 ; Unbind suspending the frame and bind it to undo instead
 (global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-z") 'undo-tree-undo)
