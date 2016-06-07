@@ -121,7 +121,7 @@
 (global-set-key (kbd "M-<mouse-9>") 'back-button-local-forward)
 
 (global-set-key (kbd "<mouse-4>") 'back-button-global-backward)
-(global-set-key (kbd "<mouse-5") 'back-button-global-forward)
+(global-set-key (kbd "<mouse-5>") 'back-button-global-forward)
 (global-set-key (kbd "M-<mouse-4>") 'back-button-local-forward)
 (global-set-key (kbd "M-<mouse-5>") 'back-button-local-forward)
 
