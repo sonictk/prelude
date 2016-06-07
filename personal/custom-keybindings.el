@@ -120,10 +120,11 @@
 (global-set-key (kbd "M-<mouse-8>") 'back-button-local-forward)
 (global-set-key (kbd "M-<mouse-9>") 'back-button-local-forward)
 
-(global-set-key (kbd "<mouse-4>") 'back-button-global-backward)
-(global-set-key (kbd "<mouse-5>") 'back-button-global-forward)
-(global-set-key (kbd "M-<mouse-4>") 'back-button-local-forward)
-(global-set-key (kbd "M-<mouse-5>") 'back-button-local-forward)
+; Blizzard RHEL 6 sends mouse4/5 for the mouse scroll wheel for some reason
+;(global-set-key (kbd "<mouse-4>") 'back-button-global-backward)
+;(global-set-key (kbd "<mouse-5>") 'back-button-global-forward)
+;(global-set-key (kbd "M-<mouse-4>") 'back-button-local-forward)
+;(global-set-key (kbd "M-<mouse-5>") 'back-button-local-forward)
 
 ; Keybindings for inserting doxygen documentation in C/C++/Java mode
 
