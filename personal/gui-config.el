@@ -323,7 +323,7 @@
 
     (package-initialize)
     (elpy-enable)
-    (elpy-use-ipython)
+    ; (elpy-use-ipython)
 )
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
