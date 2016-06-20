@@ -9,10 +9,11 @@
  '(ac-trigger-key "C-S-SPC")
  '(ac-use-fuzzy t)
  '(company-auto-complete nil)
+ '(company-idle-delay 0.5)
  '(company-minimum-prefix-length 3)
  '(company-show-numbers t)
  '(company-tooltip-align-annotations t)
- '(company-tooltip-limit 25)
+ '(company-tooltip-limit 15)
  '(ecb-options-version "2.40")
  '(elpy-modules
    (quote
