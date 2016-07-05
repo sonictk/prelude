@@ -6,6 +6,9 @@
     (global-set-key [kp-delete] 'delete-char)
 )
 
+; Set key binding to toggle subword mode
+(global-set-key (kbd "C-c C-w") 'subword-mode)
+
 ; Set key bindings for kill word and backward kill word that are overridden by Prelude
 (global-set-key (kbd "C-<backspace>") 'backward-kill-word)
     (global-set-key (kbd "C-<delete>") 'kill-word)
