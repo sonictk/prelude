@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang buffer-move back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc elpy irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc elpy irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
 
 ;; BLIZZARD ONLY
 ;; Because we are on Python 2.6 here, need to set the actual version of Python I want to use manually

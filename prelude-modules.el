@@ -47,3 +47,4 @@
 (require 'mel-mode)
 (require 'etom)
 (require 'find-files)
+(require 'buffer-move)
