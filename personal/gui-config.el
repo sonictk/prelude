@@ -467,3 +467,24 @@
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
 ; (setq venv-location "/path/to/your/virtualenvs/")
+
+; Fix scroll-all-mode not working with the mouse wheel
+(defun mwheel-scroll-all-function-all (func &optional arg)
+  (if (and scroll-all-mode arg)
+      (save-selected-window
+        (walk-windows
+         (lambda (win)
+           (select-window win)
+           (condition-case nil
+               (funcall func arg)
+             (error nil)))))
+    (funcall func arg)))
+
+(defun mwheel-scroll-all-scroll-up-all (&optional arg)
+  (mwheel-scroll-all-function-all 'scroll-up arg))
+
+(defun mwheel-scroll-all-scroll-down-all (&optional arg)
+  (mwheel-scroll-all-function-all 'scroll-down arg))
+
+(setq mwheel-scroll-up-function 'mwheel-scroll-all-scroll-up-all)
+(setq mwheel-scroll-down-function 'mwheel-scroll-all-scroll-down-all)
