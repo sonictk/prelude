@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company company-c-headers c-eldoc elpy irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc elpy irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll virtualenv virtualenvwrapper))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -149,12 +149,11 @@
 ; Enable completion of C/C++ headers
 ;; Load with `irony-mode` as a grouped backend
 (require 'company-irony-c-headers)
-(require 'company-c-headers)
-;(add-to-list 'company-backends 'company-c-headers)
 (eval-after-load 'company
   '(add-to-list
-    'company-backends '(company-irony-c-headers company-irony company-c-headers)))
+    'company-backends '(company-irony-c-headers company-irony)))
 
+; (add-to-list 'company-backends 'company-c-headers)
 ; Set autocomplete header search paths based on OS type
 ; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
 (cond
@@ -166,7 +165,6 @@
     c:/Qt/4.8.5/include
     "
     )))
-    (add-to-list 'company-c-headers-path-system "c:/Qt/4.8.5/include")
   )
 ((string-equal system-type "gnu/linux")
  )
