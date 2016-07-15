@@ -48,3 +48,4 @@
 (require 'etom)
 (require 'find-files)
 (require 'buffer-move)
+(require 'maxscript-mode)
