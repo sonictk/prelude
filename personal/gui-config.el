@@ -482,7 +482,7 @@
 ; Transparency toggle configuration
 (defvar emacs-transparency-toggle-switch nil)
 
-(defun my-emacs-transparency-toggle ()
+(defun emacs-transparency-toggle ()
   (interactive)
   (if emacs-transparency-toggle-switch
       (progn
