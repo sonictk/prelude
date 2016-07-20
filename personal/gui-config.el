@@ -381,6 +381,12 @@
   (lambda()(indent-tabs-mode t))
 )
 
+; Automatically use tabs for MaxScript mode
+(add-hook 'maxscript-mode
+  (lambda()(dtrt-indent-mode t))
+  (lambda()(indent-tabs-mode t))
+)
+
 ; Automatically setup omnisharp when editing C# solution
 ; (add-hook 'csharp-mode-hook 'omnisharp-mode)
 
