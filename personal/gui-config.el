@@ -440,6 +440,9 @@
 (add-to-list 'auto-mode-alist '("\\.mel$" . mel-mode))
 (autoload 'mel-mode "mel-mode" nil t)
 
+; Add MaxScript mode syntax highlighting
+(add-to-list 'auto-mode-alist '("\\.ms$" . maxscript-mode))
+
 ; Global line numbers for everything
 ; (global-nlinum-mode t)
 
