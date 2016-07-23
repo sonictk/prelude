@@ -153,6 +153,9 @@
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
 
+; Increase timeout for irony server since large C++ projects with lots of headers
+(setq company-async-timeout 10)
+
 ; (add-to-list 'company-backends 'company-c-headers)
 ; Set autocomplete header search paths based on OS type
 ; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
