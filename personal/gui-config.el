@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll yasnippet virtualenv virtualenvwrapper))
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc cmake-mode elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll yasnippet virtualenv virtualenvwrapper))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -510,3 +510,10 @@
         (set-frame-parameter nil 'alpha 100))
     (setq emacs-transparency-toggle-switch t)
 (set-frame-parameter nil 'alpha 50)))
+
+; Activate CMake mode automatically
+(setq auto-mode-alist
+      (append
+       '(("CMakeLists\\.txt\\'" . cmake-mode))
+       '(("\\.cmake\\'" . cmake-mode))
+       auto-mode-alist))
