@@ -109,6 +109,10 @@
 ; Disable prelude auto cleaning up whitespace on file save
 (setq prelude-clean-whitespace-on-save nil)
 
+; Use whitespace cleaning only for programming modes
+(add-hook 'prog-mode-hook
+    (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+
 ; Set UI colors
 (set-face-background 'hl-line "#1a3a3a")
 
@@ -517,3 +521,5 @@
        '(("CMakeLists\\.txt\\'" . cmake-mode))
        '(("\\.cmake\\'" . cmake-mode))
        auto-mode-alist))
+
+
