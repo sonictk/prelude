@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc cmake-mode elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll yasnippet virtualenv virtualenvwrapper))
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company c-eldoc cmake-mode elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll yasnippet view virtualenv virtualenvwrapper))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -38,6 +38,11 @@
 
 ; Enable multiple cursors
 (require 'multiple-cursors)
+
+; Configure scrolling to only scroll half a page at a time
+(require 'view)
+(global-set-key "\C-v"   'View-scroll-half-page-forward)
+(global-set-key "\M-v"   'View-scroll-half-page-backward)
 
 ; Show whitespace
 (require 'whitespace)
