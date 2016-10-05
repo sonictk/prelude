@@ -539,6 +539,6 @@
 ; Activate quick help tooltips
 (require 'company-quickhelp)
 (company-quickhelp-mode 1)
-(company-quickhelp-delay nil)
+(setq company-quickhelp-delay nil)
 (eval-after-load 'company
   '(define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin))
