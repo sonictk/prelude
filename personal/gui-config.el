@@ -340,7 +340,7 @@
 (setq gud-pdb-command-name "python -m pdb")
 
 ; Disable subword mode globally by default
-(global-subword-mode 0)
+; (global-subword-mode 0)
 
 ; Disable flycheck mode globally by default
 (global-flycheck-mode -1)
