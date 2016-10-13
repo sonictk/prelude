@@ -130,5 +130,8 @@
 (global-set-key (kbd "M-<mouse-4>") 'back-button-local-forward)
 (global-set-key (kbd "M-<mouse-5>") 'back-button-local-forward)
 
-; Keybindings for inserting doxygen documentation in C/C++/Java mode
+; TODO: Keybindings for inserting doxygen documentation in C/C++/Java mode
 
+; Additional keybinds for moving lines up/down on the home row
+(global-set-key (kbd "C-S-p") 'move-text-up)
+(global-set-key (kbd "C-S-n") 'move-text-down)
