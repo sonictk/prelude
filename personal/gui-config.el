@@ -173,21 +173,21 @@
 ; (add-to-list 'company-backends 'company-c-headers)
 ; Set autocomplete header search paths based on OS type
 ; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
-(cond
- ((string-equal system-type "windows-nt") ; any flavor of Windows
-    (setq ac-clang-flags
-          (mapcar (lambda (item)(concat "-I" item))
-                  (split-string
-    "
-    c:/Qt/4.8.5/include
-    "
-    )))
-  )
-((string-equal system-type "gnu/linux")
- )
-((string-equal system-type "darwin") ; Mac
-)
-)
+; (cond
+;  ((string-equal system-type "windows-nt") ; any flavor of Windows
+;     (setq ac-clang-flags
+;           (mapcar (lambda (item)(concat "-I" item))
+;                   (split-string
+;     "
+;     c:/Qt/4.8.5/include
+;     "
+;     )))
+;   )
+; ((string-equal system-type "gnu/linux")
+;  )
+; ((string-equal system-type "darwin") ; Mac
+; )
+; )
 
 ; Use tab-completion with no delay
 (setq company-idle-delay 0.5)
