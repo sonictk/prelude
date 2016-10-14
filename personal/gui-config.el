@@ -4,7 +4,7 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company company-quickhelp c-eldoc cmake-mode elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode yascroll yasnippet view virtualenv virtualenvwrapper))
+(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company company-quickhelp c-eldoc cmake-mode elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode srefactor yascroll yasnippet view virtualenv virtualenvwrapper))
 
 ;; BLIZZARD ONLY
 ;; Because we are on Python 2.6 here, need to set the actual version of Python I want to use manually
@@ -179,24 +179,17 @@
 ; Increase timeout for irony server since large C++ projects with lots of headers
 (setq company-async-timeout 10)
 
-; (add-to-list 'company-backends 'company-c-headers)
-; Set autocomplete header search paths based on OS type
-; NOTE: Can find the include paths with the shell command ``echo "" | g++ -v -x c++ -E -``
-(cond
- ((string-equal system-type "windows-nt") ; any flavor of Windows
-    (setq ac-clang-flags
-          (mapcar (lambda (item)(concat "-I" item))
-                  (split-string
-    "
-    c:/Qt/4.8.5/include
-    "
-    )))
-  )
-((string-equal system-type "gnu/linux")
- )
-((string-equal system-type "darwin") ; Mac
-)
-)
+; Semantic refactoring
+(require 'srefactor)
+(require 'srefactor-lisp)
+(semantic-mode 1) ;; -> this is optional for Lisp
+
+(define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+(define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+(global-set-key (kbd "M-RET o") 'srefactor-lisp-one-line)
+(global-set-key (kbd "M-RET m") 'srefactor-lisp-format-sexp)
+(global-set-key (kbd "M-RET d") 'srefactor-lisp-format-defun)
+(global-set-key (kbd "M-RET b") 'srefactor-lisp-format-buffer)
 
 ; Use tab-completion with no delay
 (setq company-idle-delay 0.5)
