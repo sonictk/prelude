@@ -323,8 +323,8 @@
 ; Set Python PDB debugger default command to use ipdb instead
 (setq gud-pdb-command-name "python -m pdb")
 
-; Disable subword mode globally by default
-; (global-subword-mode 0)
+; Enable subword mode globally by default
+(global-subword-mode t)
 
 ; Disable flycheck mode globally by default
 (global-flycheck-mode -1)
