@@ -8,12 +8,17 @@
 
 ;; BLIZZARD ONLY
 ;; Because we are on Python 2.6 here, need to set the actual version of Python I want to use manually
-
-(setq python-shell-interpreter "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
-(setq python-python-command "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
-(setq elpy-rpc-python-command "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
-(setq python-shell-interpreter "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
-(setq pyvenv-virtualenvwrapper-python "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+(cond
+ ((string-equal system-type "gnu/linux") ; linux
+    (progn
+        (setq python-shell-interpreter "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+        (setq python-python-command "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+        (setq elpy-rpc-python-command "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+        (setq python-shell-interpreter "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+        (setq pyvenv-virtualenvwrapper-python "/home/yliangsiew/virtualenvs/venv/bin/python2.7")
+    )
+  )
+)
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
