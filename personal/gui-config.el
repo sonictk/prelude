@@ -30,6 +30,11 @@
 ; Disable ECB startup tips of the day
 (setq ecb-tip-of-the-day nil)
 
+;; Save whatever’s in the current (system) clipboard before
+;; replacing it with the Emacs’ text.
+;; https://github.com/dakrone/eos/blob/master/eos.org
+(setq save-interprogram-paste-before-kill t)
+
 ; Set cursor display attributes
 (setq-default cursor-type 'box)
 (set-cursor-color "YellowGreen")
@@ -332,8 +337,8 @@
 ; Set Python PDB debugger default command to use ipdb instead
 (setq gud-pdb-command-name "python -m pdb")
 
-; Disable subword mode globally by default
-; (global-subword-mode 0)
+; Enable subword mode globally by default
+(global-subword-mode t)
 
 ; Disable flycheck mode globally by default
 (global-flycheck-mode -1)
