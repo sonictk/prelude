@@ -579,3 +579,12 @@
   (local-set-key (kbd "q") 'egdbe-quit))
 
 (add-hook 'gud-mode-hook 'egdbe-gud-mode-hook)
+
+; Function for displaying the file name in the minibuffer
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (kill-new (buffer-file-name))
+  (message (buffer-file-name)))
+
+
