@@ -49,3 +49,6 @@
 (require 'find-files)
 (require 'buffer-move)
 (require 'maxscript-mode)
+
+; Legacy move-text for Emacs 24 compatibility
+(require 'move-text)
