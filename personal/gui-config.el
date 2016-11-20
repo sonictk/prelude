@@ -28,7 +28,7 @@
 
 ; Set cursor display attributes
 (setq-default cursor-type 'box)
-(set-cursor-color "YellowGreen")
+(set-cursor-color "Green")
 
 ; Save the window layout on exit
 (desktop-save-mode 1)
@@ -279,8 +279,8 @@
 ; Check if running on Macbook based off hostname and set the font size accordingly
 (if (string-equal system-name "sonictk-mbp.local") 
     ;; Set custom font as default global font
-    (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-12"))
-    (set-face-attribute 'default nil :font "Literation Mono Powerline-12")
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono-12"))
+    (set-face-attribute 'default nil :font "Liberation Mono-12")
 )
 
 ; Disable tip of the day
