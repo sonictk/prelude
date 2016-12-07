@@ -80,6 +80,8 @@
 (global-set-key (kbd "<S-double-wheel-down>") '(lambda nil (interactive) (scroll-right 15)))
 (global-set-key (kbd "<S-triple-wheel-down>") '(lambda nil (interactive) (scroll-right 15)))
 (global-set-key (kbd "<S-mouse-4>") '(lambda nil (interactive) (scroll-right 15)))
+(global-set-key (kbd "<wheel-right>") '(lambda nil (interactive) (scroll-right 15)))
+(global-set-key (kbd "<wheel-left>") '(lambda nil (interactive) (scroll-left 15)))
 (global-set-key (kbd "<S-wheel-up>") '(lambda nil (interactive) (scroll-left 15)))
 (global-set-key (kbd "<S-double-wheel-up>") '(lambda nil (interactive) (scroll-left 15)))
 (global-set-key (kbd "<S-triple-wheel-up>") '(lambda nil (interactive) (scroll-left 15)))
