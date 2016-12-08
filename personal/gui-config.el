@@ -561,8 +561,8 @@
 
 (defun egdbe-gud-mode-hook ()
   ""
-  (local-unset-key (kbd "q"))
-  (local-set-key (kbd "q") 'egdbe-quit))
+  (local-unset-key (kbd "M-q"))
+  (local-set-key (kbd "M-q") 'egdbe-quit))
 
 (add-hook 'gud-mode-hook 'egdbe-gud-mode-hook)
 
