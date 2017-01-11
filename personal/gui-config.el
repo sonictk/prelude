@@ -460,3 +460,9 @@
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
 ; (setq venv-location "/path/to/your/virtualenvs/")
+
+; Automatically activate python-mode for SCons files
+(setq auto-mode-alist
+     (cons '("SConstruct" . python-mode) auto-mode-alist))
+(setq auto-mode-alist
+     (cons '("SConscript" . python-mode) auto-mode-alist))
