@@ -573,4 +573,8 @@
   (kill-new (buffer-file-name))
   (message (buffer-file-name)))
 
-
+; Add python-mode syntax hook for SCons files
+(setq auto-mode-alist
+     (cons '("SConstruct" . python-mode) auto-mode-alist))
+(setq auto-mode-alist
+     (cons '("SConscript" . python-mode) auto-mode-alist))
