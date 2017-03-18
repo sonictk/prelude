@@ -137,3 +137,6 @@
 ; Additional keybinds for moving lines up/down on the home row
 (global-set-key (kbd "C-S-p") 'move-text-up)
 (global-set-key (kbd "C-S-n") 'move-text-down)
+
+; Additional keybind for finding header files
+(global-set-key (kbd "C-M->") 'ff-find-other-file)
