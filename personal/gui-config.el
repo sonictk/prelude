@@ -626,3 +626,6 @@
      (cons '("SConstruct" . python-mode) auto-mode-alist))
 (setq auto-mode-alist
      (cons '("SConscript" . python-mode) auto-mode-alist))
+
+; Set cc-search-directories as safe in order to allow ff-find-other-file to work
+(put 'cc-search-directories 'safe-local-variable #'listp) 
