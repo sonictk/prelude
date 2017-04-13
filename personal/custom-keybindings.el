@@ -140,3 +140,4 @@
 
 ; Additional keybind for finding header files
 (global-set-key (kbd "C-M->") 'ff-find-other-file)
+(global-set-key (kbd "C-M-<") '(lambda nil (interactive) (ff-find-other-file t)))

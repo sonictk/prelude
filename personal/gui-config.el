@@ -596,3 +596,4 @@
 
 ; Set cc-search-directories as safe in order to allow ff-find-other-file to work
 (put 'cc-search-directories 'safe-local-variable #'listp) 
+(put 'cc-other-file-alist 'safe-local-variable #'listp) 
