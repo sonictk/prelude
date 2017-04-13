@@ -270,7 +270,7 @@
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 3))) ;; scroll 3 lines at a time when using mwheel
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+(setq scroll-step 3) ;; keyboard scroll 3 line at a time
 
 ; Disable guru-mode prompts and tips
 (setq prelude-guru nil)
@@ -534,6 +534,7 @@
 
 (setq gdb-many-windows nil)
 
+; GDB Restore windows layout after debugging and also nicer default layout
 (defun set-gdb-layout(&optional c-buffer)
   (if (not c-buffer)
       (setq c-buffer (window-buffer (selected-window)))) ;; save current buffer
@@ -579,40 +580,6 @@
   "Change the way to gdb exit."
   ad-do-it
   (set-window-configuration global-config-editing))
-
-; Enable buffer restoration after leaving gnu-gdb mode
-;; Select a register number which is unlikely to get used elsewere
-; (defconst egdbe-windows-config-register 313465989
-;   "Internal used")
-; 
-; (defvar egdbe-windows-config nil)
-; 
-; (defun set-egdbe-windows-config ()
-;   (interactive)
-;   (setq egdbe-windows-config (window-configuration-to-register egdbe-windows-config-register)))
-; 
-; (defun egdbe-restore-windows-config ()
-;   (interactive)
-;   (jump-to-register egdbe-windows-config-register))
-; 
-; (defun egdbe-start-gdb (&optional gdb-args)
-;   ""
-;   (interactive)
-;   (set-egdbe-windows-config)
-;   (call-interactively 'gdb))
-; 
-; (defun egdbe-quit ()
-;   "finish."
-;   (interactive)
-;   (gud-basic-call "quit")
-;   (egdbe-restore-windows-config))
-; 
-; (defun egdbe-gud-mode-hook ()
-;   ""
-;   (local-unset-key (kbd "M-q"))
-;   (local-set-key (kbd "M-q") 'egdbe-quit))
-; 
-; (add-hook 'gud-mode-hook 'egdbe-gud-mode-hook)
 
 ; Function for displaying the file name in the minibuffer
 (defun show-file-name ()
