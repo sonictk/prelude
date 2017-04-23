@@ -115,13 +115,13 @@
 (setq back-button-global-keystrokes          '("C-c <C-SPC>"))
 (setq back-button-global-backward-keystrokes '("C-c <C-left>"))
 (setq back-button-global-forward-keystrokes  '("C-c <C-right>"))
-(setq back-button-global-backward-keystrokes '("C-c C-b"))
-(setq back-button-global-forward-keystrokes  '("C-c C-f"))
+(setq back-button-global-backward-keystrokes '("C-c M-b"))
+(setq back-button-global-forward-keystrokes  '("C-c M-f"))
 (setq back-button-local-keystrokes           '("C-c <SPC>"))
 (setq back-button-local-backward-keystrokes  '("C-c <left>"))
 (setq back-button-local-forward-keystrokes   '("C-c <right>"))
-(setq back-button-local-backward-keystrokes  '("C-c M-b"))
-(setq back-button-local-forward-keystrokes   '("C-c M-f"))
+(setq back-button-local-backward-keystrokes  '("C-c C-b"))
+(setq back-button-local-forward-keystrokes   '("C-c C-f"))
 
 ; Account for both kinds of mice and OSes at work/home
 (global-set-key (kbd "<mouse-8>") 'back-button-global-backward)
