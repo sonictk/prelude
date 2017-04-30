@@ -561,6 +561,7 @@
     (set-window-dedicated-p w-locals t)
     (set-window-buffer w-stack (gdb-get-buffer-create 'gdb-stack-buffer))
     (set-window-dedicated-p w-stack t)
+    (set-window-dedicated-p w-gdb t)
 
     (set-window-buffer w-gdb gud-comint-buffer)
 
