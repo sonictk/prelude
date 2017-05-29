@@ -598,3 +598,6 @@
 ; Set cc-search-directories as safe in order to allow ff-find-other-file to work
 (put 'cc-search-directories 'safe-local-variable #'listp) 
 (put 'cc-other-file-alist 'safe-local-variable #'listp) 
+
+; Set CMake tab width to use 4 spaces instead of 2 by defaul
+(setq cmake-tab-width 4)
