@@ -42,6 +42,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(font-lock-warning-face ((t (:foreground "pink" :underline t :slant italic :weight bold))))
- '(hi-blue-b ((t (:foreground "tan" :weight bold))))
+ '(hi-blue-b ((t (:foreground "sandy brown" :weight bold))))
  '(whitespace-space ((t (:foreground "gray30" :slant italic))))
  '(whitespace-tab ((t (:background "#272822" :foreground "gray30")))))
