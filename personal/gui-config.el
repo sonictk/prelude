@@ -4,7 +4,51 @@
 (add-to-list 'package-archives
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
-(prelude-require-packages '(fuzzy auto-complete auto-complete-clang back-button company-irony-c-headers company-lua company-qml company-shell company-web company company-quickhelp c-eldoc cmake-mode elpy flycheck flycheck-irony irony-eldoc helm-company web-completion-data csharp-mode dtrt-indent goto-last-change glsl-mode markdown-mode multiple-cursors omnisharp whitespace nlinum fill-column-indicator irony company-irony ecb epc helm-gtags pylint py-autopep8 project-explorer shader-mode srefactor yascroll yasnippet view virtualenv virtualenvwrapper))
+(prelude-require-packages '(fuzzy 
+                            auto-complete 
+                            auto-complete-clang 
+                            back-button 
+                            company-irony-c-headers 
+                            company-lua
+                            company-qml
+                            company-shell
+                            company-web
+                            company
+                            company-quickhelp
+                            c-eldoc
+                            cmake-mode
+                            elpy
+                            flycheck
+                            flycheck-irony
+                            irony-eldoc
+                            helm-company
+                            highlight-escape-sequences
+                            web-completion-data
+                            csharp-mode
+                            dtrt-indent
+                            goto-last-change
+                            glsl-mode
+                            markdown-mode
+                            multiple-cursors
+                            omnisharp
+                            whitespace
+                            nlinum
+                            fill-column-indicator
+                            irony
+                            company-irony
+                            ecb
+                            epc
+                            helm-gtags
+                            pylint
+                            py-autopep8
+                            project-explorer
+                            shader-mode
+                            srefactor
+                            yascroll
+                            yasnippet
+                            view
+                            virtualenv
+                            virtualenvwrapper))
 
 ;; This sets the default Emacs theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -29,6 +73,9 @@
 ; Set cursor display attributes
 (setq-default cursor-type 'box)
 (set-cursor-color "Green")
+
+; Set hi-lock mode to auto-select a highlighting face
+(setq hi-lock-auto-select-face t)
 
 ; Save the window layout on exit
 (desktop-save-mode 1)
@@ -456,8 +503,7 @@
 ; (global-nlinum-mode t)
 
 ; Add syntax highlighting for escape characters
-(add-hook 'prog-mode-hook '(lambda () 
-        (highlight-regexp "%[[:alpha:]]\\|\\\\[[:alpha:]]" "hi-blue-b")))
+(hes-mode t)
 
 ; Mouse keybinding for rectangle mark mode
 (defun mouse-start-rectangle (start-event)
