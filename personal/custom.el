@@ -21,6 +21,53 @@
  '(elpy-rpc-backend nil)
  '(elpy-rpc-timeout 5)
  '(global-auto-complete-mode t)
+ '(hes-mode-alist
+   (quote
+    ((c-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]+\\|u[[:xdigit:]]\\{4\\}\\|U[[:xdigit:]]\\{8\\}\\|[\"'?\\abfnrtv]\\)\\)")
+     (c++-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]+\\|u[[:xdigit:]]\\{4\\}\\|U[[:xdigit:]]\\{8\\}\\|[\"'?\\abfnrtv]\\)\\)")
+     (cmake-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]+\\|u[[:xdigit:]]\\{4\\}\\|U[[:xdigit:]]\\{8\\}\\|[\"'?\\abfnrtv]\\)\\)")
+     (objc-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]+\\|u[[:xdigit:]]\\{4\\}\\|U[[:xdigit:]]\\{8\\}\\|[\"'?\\abfnrtv]\\)\\)")
+     (python-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]+\\|u[[:xdigit:]]\\{4\\}\\|U[[:xdigit:]]\\{8\\}\\|[\"'?\\abfnrtv]\\)\\)")
+     (java-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|u[[:xdigit:]]\\{4\\}\\|[\"'\\bfnrt]\\)\\)")
+     (clojure-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|u[[:xdigit:]]\\{4\\}\\|[\"'\\bfnrt]\\)\\)")
+     (js-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]\\{2\\}\\|u[[:xdigit:]]\\{4\\}\\|.\\)\\)")
+     (js2-mode . "\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]\\{2\\}\\|u[[:xdigit:]]\\{4\\}\\|.\\)\\)")
+     (ruby-mode
+      ("\\(\\\\\\([0-7]\\{1,3\\}\\|x[[:xdigit:]]\\{1,2\\}\\|u\\(?:[[:xdigit:]]\\{4\\}\\|{[[:xdigit:]]\\{1,6\\}\\(?:[[:space:]]+[[:xdigit:]]\\{1,6\\}\\)*}\\)\\|.\\)\\)"
+       (0
+        (let*
+            ((state
+              (syntax-ppss))
+             (term
+              (nth 3 state)))
+          (when
+              (or
+               (and
+                (eq term 39)
+                (member
+                 (match-string 2)
+                 (quote
+                  ("\\" "'"))))
+               (if
+                   (fboundp
+                    (quote ruby-syntax-expansion-allowed-p))
+                   (ruby-syntax-expansion-allowed-p state)
+                 (memq term
+                       (quote
+                        (34 47 10 96 t)))))
+            (font-lock-prepend-text-property
+             (match-beginning 1)
+             (match-end 1)
+             (quote face)
+             (quote hes-escape-backslash-face))
+            (font-lock-prepend-text-property
+             (match-beginning 2)
+             (match-end 2)
+             (quote face)
+             (quote hes-escape-sequence-face))
+            nil))
+        prepend)))
+     (emacs-lisp-mode . "\\(\\\\\\(u[[:xdigit:]]\\{4\\}\\|U00[[:xdigit:]]\\{6\\}\\|x[[:xdigit:]]+\\|[0-7]+\\|.\\)\\)"))))
  '(pe/follow-current t)
  '(pe/omit-gitignore t)
  '(scroll-bar-mode nil)
