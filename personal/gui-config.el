@@ -21,6 +21,7 @@
                             flycheck
                             flycheck-irony
                             irony-eldoc
+                            haskell-mode
                             helm-company
                             highlight-escape-sequences
                             web-completion-data
