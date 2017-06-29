@@ -260,34 +260,49 @@
     ;; linux
     (concat "./" (file-name-sans-extension file))))
 
-(add-hook 'c++-mode-hook
-    (lambda ()
-        (unless (file-exists-p "Makefile")
-            (set (make-local-variable 'compile-command)
-                (let* ((file (file-name-nondirectory buffer-file-name))
-                    (executable (convert-filename-to-executable file)))
-                        (concat "g++ -g -Wall -o "
-                            (file-name-sans-extension file)
-                             " "
-                             file
-                             " && "
-                             executable
-                        ))))
-    )
-)
-
-(add-hook 'c-mode-hook
-      (lambda ()
-        (unless (file-exists-p "Makefile")
-          (set (make-local-variable 'compile-command)
-               (let* ((file (file-name-nondirectory buffer-file-name))
-                      (executable (convert-filename-to-executable file)))
-                 (concat "gcc -g -ansi -Wall -Wpedantic -Wextra -Wc++-compat -Wconversion -o "
-                         (file-name-sans-extension file)
-                         " "
-                         file
-                         " && "
-                         executable))))))
+; TODO: Need to fix this, buffer-file-name keeps evaluating to true for some reason.
+; Also need to add support for MSVC and Clang on win32/osx.
+;(add-hook 'c++-mode-hook
+;    (lambda ()
+;        (if (buffer-file-name)
+;            (unless (file-exists-p "Makefile")
+;                (set (make-local-variable 'compile-command)
+;                    (let* ((file (file-name-nondirectory buffer-file-name))
+;                        (executable (convert-filename-to-executable file)))
+;                            (concat "g++ -g -Wall -o "
+;                                (file-name-sans-extension file)
+;                                 " "
+;                                 file
+;                                 " && "
+;                                 executable
+;                            )
+;                    )
+;                )
+;            )
+;        )
+;    )
+;)
+;
+;(add-hook 'c-mode-hook
+;    (lambda ()
+;        (if (buffer-file-name)
+;            (unless (file-exists-p "Makefile")
+;                (set (make-local-variable 'compile-command)
+;                    (let* ((file (file-name-nondirectory buffer-file-name))
+;                           (executable (convert-filename-to-executable file)))
+;                        (concat "gcc -g -ansi -Wall -Wpedantic -Wextra -Wc++-compat -Wconversion -o "
+;                                (file-name-sans-extension file)
+;                                " "
+;                                file
+;                                " && "
+;                                executable
+;                        )
+;                    )
+;                )
+;            )
+;        )
+;    )
+;)
 
 (add-hook 'python-mode-hook
           (lambda ()
