@@ -253,6 +253,10 @@
     )
 )
 
+; Enable buffer moving of windows
+(global-set-key (kbd "<M-S-left>") 'buf-move-left)
+(global-set-key (kbd "<M-S-right>") 'buf-move-right)
+
 ; Enable automatic settings for compiling projects for various different languages
 (defun convert-filename-to-executable (file)
   (if (eq system-type 'windows-nt)
