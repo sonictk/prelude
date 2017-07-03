@@ -14,17 +14,17 @@
 ;(set-face-attribute 'default nil :font "Literation Mono Powerline-10")
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Literation Mono Powerline" (font-family-list))
-    (add-to-list 'default-frame-alist '(font . "Literation Mono Powerline-10"))
-    (set-face-attribute 'default nil :font "Literation Mono Powerline-10")))
+  (when (member "Liberation Mono" (font-family-list))
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+    (set-face-attribute 'default nil :font "Liberation Mono-11.5")))
  ((string-equal system-type "darwin") ; Mac OS X
-  (when (member "Literation Mono Powerline" (font-family-list))
-    (add-to-list 'default-frame-alist '(font . "Liberation Mono Powerline-10"))
-    (set-face-attribute 'default nil :font "Liberation Mono Powerline-10")))
+  (when (member "Liberation Mono" (font-family-list))
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+    (set-face-attribute 'default nil :font "Liberation Mono-11.5")))
  ((string-equal system-type "gnu/linux") ; linux
-  (when (member "Literation Mono Powerline" (font-family-list))
-    (add-to-list 'default-frame-alist '(font . "Liberation Mono Powerline-10"))
-    (set-face-attribute 'default nil :font "Liberation Mono Powerline-10"))))
+  (when (member "Liberation Mono" (font-family-list))
+    (add-to-list 'default-frame-alist '(font . "Liberation Mono-11.5"))
+    (set-face-attribute 'default nil :font "Liberation Mono-11.5"))))
 
 ; Stop Emacs from losing undo information by
 ; setting very high limits for undo buffers

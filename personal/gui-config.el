@@ -661,6 +661,18 @@
 (setq auto-mode-alist
      (cons '("SConscript" . python-mode) auto-mode-alist))
 
+; Set swapping between header/implementation files to work
+(setq-default ff-other-file-alist
+  '(("\\.cpp\\'" (".hpp" ".ipp" ".h"))
+    ("\\.ipp\\'" (".hpp" ".cpp"))
+    ("\\.hpp\\'" (".ipp" ".cpp" ".cxx"))
+    ("\\.cxx\\'" (".hxx" ".ixx" ".h"))
+    ("\\.ixx\\'" (".cxx" ".hxx" ".h"))
+    ("\\.hxx\\'" (".ixx" ".cxx" ".cpp"))
+    ("\\.c\\'" (".h"))
+    ("\\.h\\'" (".c" ".cpp" ".cxx" ".ixx" ".ipp")))
+)
+
 ; Set cc-search-directories as safe in order to allow ff-find-other-file to work
 (put 'cc-search-directories 'safe-local-variable #'listp) 
 (put 'cc-other-file-alist 'safe-local-variable #'listp) 
