@@ -127,7 +127,7 @@
 (global-set-key (kbd "<mouse-8>") 'back-button-global-backward)
 (global-set-key (kbd "<mouse-9>") 'back-button-global-forward)
 (global-set-key (kbd "M-<mouse-8>") 'back-button-local-forward)
-(global-set-key (kbd "M-<mouse-9>") 'back-button-local-forward)
+(global-set-key (kbd "M-<mouse-9>") 'back-button-local-backward)
 
 (global-set-key (kbd "<mouse-4>") '(lambda nil (interactive) (scroll-down 6)))
 (global-set-key (kbd "<mouse-5>") '(lambda nil (interactive) (scroll-up 6)))
